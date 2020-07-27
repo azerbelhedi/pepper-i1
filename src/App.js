@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, createContext } from 'react';
+import Panel1 from './components/Panel1';
+import Panel2 from './components/Panel2';
+
+export const StoreContext = createContext({})
+
 
 function App() {
+  const [store, setStore] = useState({name : "azer", age : 21});
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <StoreContext.Provider value = {{store, setStore}}>
+        <Panel1/>
+        <Panel2/>
+      </StoreContext.Provider>
     </div>
   );
 }
+
 
 export default App;
